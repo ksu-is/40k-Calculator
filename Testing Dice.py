@@ -44,8 +44,6 @@ def miss_counter(input_results_list):
 
 
 #reroll
-
-
 def reroll_counter(input_list):
     reroll_type= input("\n1's [1]; All [2]; or None[Enter]: ")
     reroll_list=input_list
@@ -54,6 +52,8 @@ def reroll_counter(input_list):
             if reroll ==1:
                 reroll=random.randint(1,6)
                 print("this",reroll)
+                #add counter so you can set index below
+                reroll_list[]=reroll
         if int(reroll_type)==2:
             if reroll < BS:
                 reroll=random.randint(1,6)
