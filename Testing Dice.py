@@ -17,9 +17,13 @@ def dice_roll(ans):
     #takes previously generated list and applies the user variable to each dice result in list
 def modifier_applier(input_list):
     mod_value=int(input("What is the modifier?: "))
+    count=0
     #itterates through each dice result in order
     for value in input_list:
-        value+=mod_value
+        value= value+mod_value
+        input_list[count]= value
+        count+=1
+    
     return input_list
 
 
@@ -56,14 +60,16 @@ def reroll_counter(input_list):
     count=0
     #iterate through each result in list
     for reroll in reroll_list:
-        if int(reroll_type)==1:
+        if reroll_type!=1 or 2:
+            pass
+        if reroll_type==1:
             if reroll ==1:
                 #simulate rerolling the dice
                 reroll=random.randint(1,6)
                 print("this",reroll)
                 #Counter places dice back into list
                 reroll_list[count]=reroll
-        if int(reroll_type)==2:
+        if reroll_type==2:
             if reroll < BS:
                 #simulate rerolling the dice
                 reroll=random.randint(1,6)
@@ -120,7 +126,7 @@ def save_test_creator(input_list,AP,save_value):
     saves=0
     failed=0
     for save in input_list:
-        if save-AP>save_value:
+        if save-AP>=save_value:
             saves+=1
         else:
             failed+=1
@@ -172,14 +178,14 @@ while count==1:
     
     #wounds
     Wound_rolls=wound_list_creator(hit_results)
-    print("Wound Rolls: \n",Wound_rolls)
+    print("\nWound Rolls: \n",Wound_rolls)
    
    
     #wounds reroll
-    print("\n Any Avaiable Rerolls?")
+    print("\nAny Avaiable Rerolls?")
     Wound_rolls=reroll_counter(Wound_rolls)
     Wound_rolls=modifier_applier(Wound_rolls)
-    print("Wound rolls after rerolls: \n",Wound_rolls)
+    print("\nWound rolls after rerolls: \n",Wound_rolls)
    
     #wounds final
         #gather info on target and weapon
