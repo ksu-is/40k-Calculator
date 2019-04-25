@@ -95,21 +95,31 @@ def wound_list_creator(num_hits):
 def wound_counter(T,S,input_list):
     wounds_count=0
     for wound in input_list:
+        #dice rolls of 1 are always a failure
+        #when Weapon Strength is greater than the targets toughness
         if S>T:
+            #test if the strength is 2 times as great or more than the toughness
             if S>=2*T:
+                #if yes than dice rolls of 2+ cause wounds
                 if wound >= 2:
                     wounds_count+=1
             else:
+                #if no then wound rolls of 3+ cause wounds
                 if wound >=3:
                     wounds_count+=1
         if S==T:
+            #if strength is equal to toughness dice roll of 4+ cause wounds
             if wound >=4:
                 wounds_count+=1
+        #when Weapon Strength is less than the targets toughness
         if S<T:
+            #test if the toughness is 2 times as great or more than the weapon strength
             if T>=2*S:
+                #dice roll of 6+ is needed
                 if wound==6:
                     wounds_count+=1
             else:
+                #dice roll of 5+ is needed
                 if wound >=5:
                     wounds_count+=1
     return wounds_count
