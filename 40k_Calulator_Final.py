@@ -83,7 +83,7 @@ def reroll_counter(input_list):
             if reroll ==1:
                 #simulate rerolling the dice
                 reroll=random.randint(1,6)
-                print("this",reroll)
+                print("New dice roll: ",reroll)
                 #Counter places dice back into list
                 reroll_list[count]=reroll
         if reroll_type==2:
